@@ -1,101 +1,52 @@
-import { useState } from 'react';
-import Header from "./Component/Header/Header.jsx"
-import Formularios from "./Component/Formulario/Formularios.jsx"
-import MiOrg from "./Component/MiOrg/MiOrg.jsx"
-import Equipo from "./Component/Equipo/Equipo.jsx";
-import './app.css'
-import Footers from './Component/Footer/Footer.jsx';
-import Calificacion from './Component/Calificacion/Calificacion.jsx';
+import Main1 from './pages/main.jsx';
+import Main2 from './pages/main2.jsx';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Outlet,
+  Route
+} from 'react-router-dom'
+import { Footer } from 'antd/es/layout/layout.js';
+import { Formu } from './pages/regitro2.jsx';
+import Logins from './pages/registracion.jsx'
+import Registro from './pages/cuenta.jsx';
+import Viewer from './Component/vista/vista.jsx';
+
+
 
 function App() {
-  const [mostrarFormulario, actualizarMostrar] = useState(false)
-  const [colaboradores, actualizarColaboradores] = useState([{
-    equipo: "Pediatra",
-    foto: "https://media.licdn.com/dms/image/D4D03AQHdrDngGxQcxg/profile-displayphoto-shrink_200_200/0/1680814409956?e=1698883200&v=beta&t=rj-h4tL8OitHDRc5qnDJzt4qnfD_gQAP9Ozom0nzKBM",
-    nombre: "Octavio Balverdi",
-    descripcion: "exelente medico",
-    calificacion: [Calificacion]
-  }])
-  //Ternario --> condicion ? seMuestra : noSeMuestra
-  // condicion && seMuestra
 
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarFormulario)
-  }
+  
+  
+  
 
-  //Registrar colaborador
-
-  const registrarColaborador = (colaborador) => {
-    console.log("Nuevo colaborador", colaborador)
-    //Spread operator
-    actualizarColaboradores([...colaboradores, colaborador])
-  }
-
-
-  //Lista de equipos
-  const equipos = [
-    {
-      titulo: "Pediatra",
-      colorPrimario: "#57C278",
-      colorSecundario: "#D9F7E9"
-    },
-    {
-      titulo: "Odontopediatra",
-      colorPrimario: "#82CFFA",
-      colorSecundario: "#E8F8FF"
-    },
-    {
-      titulo: "Gastroenterólogo",
-      colorPrimario: "#A6D157",
-      colorSecundario: "#F0F8E2"
-    },
-    {
-      titulo: "Neurólogo",
-      colorPrimario: "#E06B69",
-      colorSecundario: "#FDE7E8"
-    },
-    {
-      titulo: "Neumonologo",
-      colorPrimario: "#DB6EBF",
-      colorSecundario: "#FAE9F5"
-    },
-    {
-      titulo: "Traumatólogo",
-      colorPrimario: "#FFBA05",
-      colorSecundario: "#FFF5D9"
-    },
-    {
-      titulo: "Neonatologo",
-      colorPrimario: "#FF8A29",
-      colorSecundario: "#FFEEDF"
-    }
-  ]
-
+  
   return (
-    <div>
-      <Header />
-      {/* {mostrarFormulario ? <Formulario /> : <></>} */}
-      {
-        mostrarFormulario && <Formularios
-          equipos={equipos.map((equipo) => equipo.titulo)}
-          registrarColaborador={registrarColaborador}
-        />
-      }
 
-      <MiOrg cambiarMostrar={cambiarMostrar} />
+    <Router >
+      <Routes>
+        <Route path='/' element={<Root />}>
+          <Route index element={<Logins />} />
+          {/* <Route index element={<Formu />} /> */}
+          <Route path='/home' element={<Main1 />} />
+          <Route path='/homeadmin' element={<Main2 />} />
+          <Route path='/registro' element={<Registro />} />
+          <Route path='/vista' element={<Viewer />} />
 
-      {
-        equipos.map((equipo) => <Equipo
-          datos={equipo}
-          key={equipo.titulo}
-          colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
-        />
-        )
-      }
-      <Footers />
-
-    </div>
-  );
+        </Route>
+      </Routes>
+    </Router>)
 }
 
 export default App
+
+const Root = () =>
+  <>
+  
+    <div>
+      <Footer />
+    </div>
+    <div>
+      <Outlet />
+    </div>
+  </>

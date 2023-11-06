@@ -2,8 +2,8 @@ import "./Header.css"
 
 function Header() {
     return ( 
-    <header className="header">
-        <img src='public/img/header-cartilla.png' alt='Cartilla'/>
+    <header className="header" style={{ backgroundImage: "url(/img/footer.png)" }}>
+        <img src='/img/header-cartilla.png' alt='Cartilla'/>
     </header>  
     );
 }

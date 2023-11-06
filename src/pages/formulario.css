@@ -1,0 +1,24 @@
+.sec{
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(255, 0, 0);
+    font-size: xx-large;
+    color: aliceblue;
+    
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.formulario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: aliceblue;
+}

@@ -1,9 +1,6 @@
-body {
-    margin: 0;
-    font-family: 'Prata', serif;
-}
 
-body {
-    display: block;
-    margin: 0px;
-}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }

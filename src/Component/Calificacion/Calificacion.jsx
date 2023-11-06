@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { FaStar } from "react-icons/fa"
 import "./Calificacion.css"
 
-const Calificacion = () => {
+const Calificacion = (props) => {
     const [rating , setRating] = useState (null)
     const [hover , setHover] = useState (null)
 return(
@@ -15,7 +15,8 @@ return(
             <label>
         <input type="radio" name="rating" className="input" 
         value={ratingValue} 
-        onClick={() => setRating(ratingValue)}/>
+        onClick={() => setRating(ratingValue)}
+        key={Calificacion.ratingValue}/>
         
         <FaStar className='star' 
         color={ratingValue <= ( hover || rating) ? "#ffc107" : "#e4e5e9"}
