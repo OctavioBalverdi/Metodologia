@@ -1,7 +1,7 @@
 import "./Colaborador.css"
 import {AiFillCloseCircle, AiFillHeart, AiOutlineHeart,} from "react-icons/ai"
 import {WechatOutlined} from "@ant-design/icons"
-import { Navigate, useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 import Viewer from "../vista/vista"
 
 const Colaborador = (props) => {
